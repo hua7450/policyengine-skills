@@ -26,7 +26,7 @@ jobs:
         with:
           repository: PolicyEngine/policyengine-claude
           path: wrapper
-          token: ${{ secrets.POLICYENGINE_SYNC_TOKEN }}
+          ssh-key: ${{ secrets.POLICYENGINE_CLAUDE_DEPLOY_KEY }}
 
       - name: Sync files
         run: rsync -a --delete build/policyengine-claude/ wrapper/
