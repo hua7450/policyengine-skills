@@ -31,6 +31,12 @@ def test_build_claude_wrapper(tmp_path: Path) -> None:
     assert manifest["name"] == "policyengine-claude"
     assert len(manifest["plugins"]) == 9
 
+    for plugin in manifest["plugins"]:
+        assert plugin.get("source") == "./", f"{plugin['name']} missing source=./"
+        assert "hooks" not in plugin or plugin["hooks"] is not None, (
+            f"{plugin['name']} has hooks: null"
+        )
+
     assert (output_dir / "skills" / "domain-knowledge" / "policyengine-us-skill" / "SKILL.md").exists()
     assert (output_dir / "commands" / "create-pr.md").exists()
     assert (output_dir / "agents" / "api" / "api-reviewer.md").exists()

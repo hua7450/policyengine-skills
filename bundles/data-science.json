@@ -1,6 +1,5 @@
 {
   "name": "data-science",
-  "source": "./",
   "description": "Data analysis, survey enhancement, imputation, calibration, and microdata utilities",
   "category": "data",
   "version": "3.22.3",
@@ -19,6 +18,7 @@
     "url": "https://github.com/PolicyEngine"
   },
   "license": "MIT",
+  "hooks": null,
   "skills": [
     "./skills/data-science/microdf-skill",
     "./skills/data-science/microimpute-skill",

@@ -1,6 +1,5 @@
 {
   "name": "api-development",
-  "source": "./",
   "description": "API development - Flask endpoints, caching, services, and integration patterns",
   "category": "development",
   "version": "3.22.3",
@@ -16,6 +15,7 @@
     "url": "https://github.com/PolicyEngine"
   },
   "license": "MIT",
+  "hooks": null,
   "skills": [
     "./skills/tools-and-apis/policyengine-api-skill",
     "./skills/tools-and-apis/policyengine-api-v2-skill",

@@ -20,8 +20,17 @@ def load_bundles(source_root: Path) -> list[dict]:
     for bundle_path in sorted(bundle_dir.glob("*.json")):
         bundle = load_json(bundle_path)
         validate_bundle(source_root, bundle_path, bundle)
-        bundles.append(bundle)
+        bundles.append(normalize_plugin(bundle))
     return bundles
+
+
+def normalize_plugin(bundle: dict) -> dict:
+    # Claude Code 2.1.89+ requires `source` on every plugin and rejects `hooks: null`.
+    plugin = dict(bundle)
+    plugin.setdefault("source", "./")
+    if plugin.get("hooks") is None:
+        plugin.pop("hooks", None)
+    return plugin
 
 
 def validate_bundle(source_root: Path, bundle_path: Path, bundle: dict) -> None:
